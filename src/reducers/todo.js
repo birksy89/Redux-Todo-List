@@ -10,17 +10,17 @@
  * follows a different convention (such as function maps) if it makes sense for your
  * project.
  */
-export default function counter(state = 0, action) {
-  console.log("Inside the 'counter' reducer", state);
-
-  switch (action.type) {
-    case "INCREMENT":
-      console.log("Inside action type - increment");
-
-      return state + 1;
-    case "DECREMENT":
-      return state - 1;
-    default:
-      return state;
+export default function todo(state = [], action) {
+    console.log("Inside the 'todo' reducer", state);
+  
+    switch (action.type) {
+      case "ADD_TODO":
+        console.log("Inside action type - ADD_TODO");
+        return [...state, "Hard-coded"];
+      case "REMOVE_TODO":
+        return []
+      default:
+        return state;
+    }
   }
-}
+  
