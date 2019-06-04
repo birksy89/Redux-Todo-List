@@ -8,11 +8,17 @@ class TodoList extends Component {
     renderTodos = (data = []) => {
         return data.map(item =>  <li>{item}</li>)
     }
+
+    handleButton = () => {
+        this.props.addTodo("Dummy Item...")
+        
+    }
     
     render() {
         const {todoData} = this.props;
         return (
             <div>
+                <button onClick={() => this.handleButton()}>Add Dummy Item</button>
                 <ul>
                     {this.renderTodos(todoData)}
                 </ul>
@@ -30,6 +36,7 @@ const mapStateToProps = state => {
   };
   
   const mapDispatchToProps = {
+    addTodo
     // increment,
     // decrement,
     // reset
