@@ -1,18 +1,24 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
+// Import the possible actions
 import { increment, decrement, reset } from "../actions/actionCreators";
 
 class Counter extends Component {
-  handleClick = () => {
-    console.log("Clicked...");
+  handleInc = () => {
+    console.log("Clicked Increment Button");
     this.props.increment();
+  };
+  handleDec = () => {
+    console.log("Clicked Decrement Button");
+    this.props.decrement();
   };
   render() {
     return (
-      <div onClick={() => this.handleClick()}>
-        I am the counter... (Click ME)
-        <h2>{this.props.state}</h2>
+      <div>
+        I am the counter...
+        <button onClick={() => this.handleInc()}>Increment</button>
+        <button onClick={() => this.handleDec()}>Decrement</button>
+        <h2>{this.props.counter}</h2>
       </div>
     );
   }
@@ -20,11 +26,15 @@ class Counter extends Component {
 
 const mapStateToProps = state => {
   return {
-    state
+    counter: state.counter
   };
 };
 
-const mapDispatchToProps = { increment, decrement, reset };
+const mapDispatchToProps = {
+  increment,
+  decrement,
+  reset
+};
 
 export default connect(
   mapStateToProps,
