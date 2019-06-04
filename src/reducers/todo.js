@@ -14,12 +14,12 @@
 const initialState = ["hey", "ho", "lets's go", "as Dan A says"]
 
 export default function todo(state = initialState, action) {
-    console.log("Inside the 'todo' reducer", state);
+    console.log("Inside the 'todo' reducer", state, action);
   
     switch (action.type) {
       case "ADD_TODO":
         console.log("Inside action type - ADD_TODO");
-        return [...state, "Hard-coded"];
+        return [...state, action.text];
       case "REMOVE_TODO":
         return []
       default:
