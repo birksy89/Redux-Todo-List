@@ -51,14 +51,17 @@ export default function todo(state = initialState, action) {
     case "ADD_TODO":
       console.log("Inside action type - ADD_TODO");
       const newTodo = {
-        userId:1,
+        userId: 1,
         id: action.id,
         title: action.text
-      }
-
+      };
       return [...state, newTodo];
+
     case "REMOVE_TODO":
-      return [];
+      // Filter out the removed todo via id
+      const filtered = state.filter(todo => todo.id !== action.id);
+      return [...filtered];
+
     default:
       return state;
   }

@@ -1,22 +1,29 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 // Import the possible actions
-import { addTodo } from "../actions/actionCreators";
+import { addTodo, removeTodo } from "../actions/actionCreators";
 
 class TodoList extends Component {
   renderTodos = (data = []) => {
-    return data.map(item => <li>{item.title}</li>);
+    return data.map(item => <li>
+      <button onClick={() => this.handleRemove(item.id)}>X</button>
+      {item.title}</li>);
   };
 
-  handleButton = () => {
+  handleAddDummy = () => {
     this.props.addTodo("Dummy Item...");
+  };
+  handleRemove = (id) => {
+    console.log("I will remove...", id);
+    this.props.removeTodo(id);
+   
   };
 
   render() {
     const { todoData } = this.props;
     return (
       <div>
-        <button onClick={() => this.handleButton()}>Add Dummy Item</button>
+        <button onClick={() => this.handleAddDummy()}>Add Dummy Item</button>
         <ul>{this.renderTodos(todoData)}</ul>
       </div>
     );
@@ -32,10 +39,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  addTodo
-  // increment,
-  // decrement,
-  // reset
+  addTodo,
+  removeTodo
 };
 
 export default connect(
