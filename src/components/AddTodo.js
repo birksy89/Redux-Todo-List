@@ -5,7 +5,7 @@ import { addTodo } from "../actions/actionCreators";
 
 class AddTodo extends Component {
   state = {
-    newTodo: "xxx"
+    newTodo: ""
   };
 
   handleChange = e => {
@@ -19,10 +19,16 @@ class AddTodo extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const {newTodo} = this.state;
-    console.log("Submitting...",newTodo);
+    const { newTodo } = this.state;
+    console.log("Submitting...", newTodo);
 
-    this.props.addTodo(newTodo)
+    if (newTodo.length > 0) {
+      this.props.addTodo(newTodo);
+
+      this.setState({
+        newTodo: ""
+      });
+    }
   };
 
   render() {
@@ -40,8 +46,6 @@ class AddTodo extends Component {
     );
   }
 }
-
-
 
 const mapDispatchToProps = {
   addTodo
