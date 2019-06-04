@@ -5,7 +5,7 @@ import { addTodo, removeTodo } from "../actions/actionCreators";
 
 class TodoList extends Component {
   renderTodos = (data = []) => {
-    return data.map(item => <li>
+    return data.map(item => <li key={item.id}>
       <button onClick={() => this.handleRemove(item.id)}>X</button>
       {item.title}</li>);
   };
