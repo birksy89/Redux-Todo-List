@@ -1,6 +1,9 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+// Import the possible actions
+import { addTodo } from "../actions/actionCreators";
 
-export default class AddTodo extends Component {
+class AddTodo extends Component {
   state = {
     newTodo: "xxx"
   };
@@ -18,6 +21,8 @@ export default class AddTodo extends Component {
     e.preventDefault();
     const {newTodo} = this.state;
     console.log("Submitting...",newTodo);
+
+    this.props.addTodo(newTodo)
   };
 
   render() {
@@ -35,3 +40,14 @@ export default class AddTodo extends Component {
     );
   }
 }
+
+
+
+const mapDispatchToProps = {
+  addTodo
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(AddTodo);
