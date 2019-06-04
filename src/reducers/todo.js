@@ -10,7 +10,10 @@
  * follows a different convention (such as function maps) if it makes sense for your
  * project.
  */
-export default function todo(state = [], action) {
+
+const initialState = ["hey", "ho", "lets's go", "as Dan A says"]
+
+export default function todo(state = initialState, action) {
     console.log("Inside the 'todo' reducer", state);
   
     switch (action.type) {
