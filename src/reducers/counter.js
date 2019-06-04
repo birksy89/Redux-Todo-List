@@ -11,15 +11,16 @@
  * project.
  */
 export default function counter(state = 0, action) {
-  console.log("Inside the 'counter' reducer", state);
+  console.log("Inside the 'counter' reducer", state, action);
 
   switch (action.type) {
     case "INCREMENT":
       console.log("Inside action type - increment");
-
       return state + 1;
     case "DECREMENT":
       return state - 1;
+    case "RESET":
+      return 0;
     default:
       return state;
   }

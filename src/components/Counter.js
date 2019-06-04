@@ -12,12 +12,17 @@ class Counter extends Component {
     console.log("Clicked Decrement Button");
     this.props.decrement();
   };
+  handleReset = () => {
+    console.log("Clicked Reset Button");
+    this.props.reset();
+  };
   render() {
     return (
       <div>
         I am the counter...
         <button onClick={() => this.handleInc()}>Increment</button>
         <button onClick={() => this.handleDec()}>Decrement</button>
+        <button onClick={() => this.handleReset()}>Reset</button>
         <h2>{this.props.counter}</h2>
       </div>
     );
