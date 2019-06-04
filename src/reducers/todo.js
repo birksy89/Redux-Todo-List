@@ -11,19 +11,55 @@
  * project.
  */
 
-const initialState = ["hey", "ho", "lets's go", "as Dan A says"]
+const initialState = [
+  {
+    userId: 1,
+    id: 1,
+    title: "delectus aut autem",
+    completed: false
+  },
+  {
+    userId: 1,
+    id: 2,
+    title: "quis ut nam facilis et officia qui",
+    completed: false
+  },
+  {
+    userId: 1,
+    id: 3,
+    title: "fugiat veniam minus",
+    completed: false
+  },
+  {
+    userId: 1,
+    id: 4,
+    title: "et porro tempora",
+    completed: true
+  },
+  {
+    userId: 1,
+    id: 5,
+    title: "laboriosam mollitia et enim quasi adipisci quia provident illum",
+    completed: false
+  }
+];
 
 export default function todo(state = initialState, action) {
-    console.log("Inside the 'todo' reducer", state, action);
-  
-    switch (action.type) {
-      case "ADD_TODO":
-        console.log("Inside action type - ADD_TODO");
-        return [...state, action.text];
-      case "REMOVE_TODO":
-        return []
-      default:
-        return state;
-    }
+  console.log("Inside the 'todo' reducer", state, action);
+
+  switch (action.type) {
+    case "ADD_TODO":
+      console.log("Inside action type - ADD_TODO");
+      const newTodo = {
+        userId:1,
+        id: action.id,
+        title: action.text
+      }
+
+      return [...state, newTodo];
+    case "REMOVE_TODO":
+      return [];
+    default:
+      return state;
   }
-  
+}

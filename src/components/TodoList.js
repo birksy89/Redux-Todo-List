@@ -5,7 +5,7 @@ import { addTodo } from "../actions/actionCreators";
 
 class TodoList extends Component {
   renderTodos = (data = []) => {
-    return data.map(item => <li>{item}</li>);
+    return data.map(item => <li>{item.title}</li>);
   };
 
   handleButton = () => {
