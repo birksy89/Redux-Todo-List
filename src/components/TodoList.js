@@ -5,8 +5,14 @@ import { addTodo, removeTodo, fetchTodos } from "../actions/actionCreators";
 
 class TodoList extends Component {
 
-  componentWillMount() {
-    this.props.fetchTodos();
+  componentDidMount() {
+
+    console.log();
+    
+    if(this.props.todoData.length ===0){
+
+      this.props.fetchTodos();
+    }
   }
   
   renderTodos = (data = []) => {

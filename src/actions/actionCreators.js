@@ -16,7 +16,7 @@ export const reset = () => ({
 
 export function fetchTodos() {
   return function(dispatch) {
-    fetch("https://jsonplaceholder.typicode.com/todos")
+    fetch("https://jsonplaceholder.typicode.com/todos?_limit=10")
       .then(res => res.json())
       .then(data =>
         dispatch({

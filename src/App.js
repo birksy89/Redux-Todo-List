@@ -40,7 +40,7 @@ function App() {
               <Link to="/todo">Todos</Link>
             </li>
             <li>
-              <Link to="/add">Topics</Link>
+              <Link to="/add">Add Todo</Link>
             </li>
           </ul>
 
@@ -49,7 +49,6 @@ function App() {
           <Route exact path="/" component={Counter} />
           <Route path="/todo" component={TodoList} />
           <Route path="/add" component={AddTodo} />
-         
         </div>
       </Router>
     </Provider>

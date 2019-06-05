@@ -11,38 +11,7 @@
  * project.
  */
 
-const initialState = [
-  {
-    userId: 1,
-    id: 'x1',
-    title: "delectus aut autem",
-    completed: false
-  },
-  {
-    userId: 1,
-    id: 'x2',
-    title: "quis ut nam facilis et officia qui",
-    completed: false
-  },
-  {
-    userId: 1,
-    id: 'x3',
-    title: "fugiat veniam minus",
-    completed: false
-  },
-  {
-    userId: 1,
-    id: 'x4',
-    title: "et porro tempora",
-    completed: true
-  },
-  {
-    userId: 1,
-    id: 'x5',
-    title: "laboriosam mollitia et enim quasi adipisci quia provident illum",
-    completed: false
-  }
-];
+const initialState = [];
 
 export default function todo(state = initialState, action) {
   console.log("Inside the 'todo' reducer", state, action);
