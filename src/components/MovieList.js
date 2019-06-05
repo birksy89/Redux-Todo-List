@@ -1,11 +1,23 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
+import { connect } from "react-redux";
+// Import the possible actions
+import { fetchMovies } from "../actions/movieActions";
 
-export default class MovieList extends Component {
-    render() {
-        return (
-            <div>
-                List of Movies
-            </div>
-        )
-    }
+class MovieList extends Component {
+  componentDidMount() {
+    this.props.fetchMovies();
+  }
+
+  render() {
+    return <div>List of Movies</div>;
+  }
 }
+
+const mapDispatchToProps = {
+  fetchMovies
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(MovieList);
