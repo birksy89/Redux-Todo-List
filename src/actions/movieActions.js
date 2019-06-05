@@ -1,6 +1,7 @@
 export const FETCH_MOVIES_BEGIN   = 'FETCH_MOVIES_BEGIN';
 export const FETCH_MOVIES_SUCCESS = 'FETCH_MOVIES_SUCCESS';
 export const FETCH_MOVIES_FAILURE = 'FETCH_MOVIES_FAILURE';
+export const TOGGLE_MOVIE_FAVOURITE = 'TOGGLE_MOVIE_FAVOURITE';
 
 export const fetchMoviesBegin = () => ({
   type: FETCH_MOVIES_BEGIN
@@ -41,3 +42,10 @@ export function fetchMovies() {
     }
     return response;
   }
+
+
+  // Toggle movie is favourite
+  export const toggleMovieFavourite = (movieId) => ({
+    type: TOGGLE_MOVIE_FAVOURITE,
+    payload: movieId
+  });

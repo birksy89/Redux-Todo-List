@@ -1,18 +1,35 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 // Import the possible actions
-import { fetchMovies } from "../actions/movieActions";
+import { fetchMovies, toggleMovieFavourite } from "../actions/movieActions";
 
 class MovieList extends Component {
   componentDidMount() {
-    this.props.fetchMovies();
+    const { movies } = this.props;
+
+    if (movies.length === 0) {
+      this.props.fetchMovies();
+    }
   }
+
+  favouriteMovie = movieId => {
+    console.log(`Liking movie : ${movieId}`);
+    this.props.toggleMovieFavourite(movieId);
+  };
 
   render() {
     const { movies } = this.props;
 
     const movieList = movies.map(movie => {
-      return <p key={movie.id}>{movie.title}</p>;
+      return (
+        <p key={movie.id}>
+          <button onClick={() => this.favouriteMovie(movie.id)}>
+            {//Check if favourite
+            movie.isFavourite ? <>X</> : <>&hearts;</>}
+          </button>{" "}
+          {movie.title}
+        </p>
+      );
     });
 
     return (
@@ -32,7 +49,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  fetchMovies
+  fetchMovies,
+  toggleMovieFavourite
 };
 
 export default connect(
