@@ -1,9 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 // Import the possible actions
-import { addTodo, removeTodo } from "../actions/actionCreators";
+import { addTodo, removeTodo, fetchTodos } from "../actions/actionCreators";
 
 class TodoList extends Component {
+
+  componentWillMount() {
+    this.props.fetchTodos();
+  }
+  
   renderTodos = (data = []) => {
     return data.map(item => <li key={item.id}>
       <button onClick={() => this.handleRemove(item.id)}>X</button>
@@ -40,7 +45,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   addTodo,
-  removeTodo
+  removeTodo,
+  fetchTodos
 };
 
 export default connect(

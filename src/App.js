@@ -1,6 +1,7 @@
 import React from "react";
-import { createStore } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
+import thunk from "redux-thunk";
 import "./App.css";
 
 //  Components
@@ -12,11 +13,17 @@ import Counter from "./components/Counter";
 //  Reducer(s)
 import rootReducer from "./reducers";
 
+//  Middleware
+const middleware = [thunk];
+
 // Create a Redux store holding the state of your app.
 // Its API is { subscribe, dispatch, getState }.
 let store = createStore(
   rootReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  compose(
+    applyMiddleware(...middleware),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  )
 );
 
 

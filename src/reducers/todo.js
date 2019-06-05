@@ -14,31 +14,31 @@
 const initialState = [
   {
     userId: 1,
-    id: 1,
+    id: 'x1',
     title: "delectus aut autem",
     completed: false
   },
   {
     userId: 1,
-    id: 2,
+    id: 'x2',
     title: "quis ut nam facilis et officia qui",
     completed: false
   },
   {
     userId: 1,
-    id: 3,
+    id: 'x3',
     title: "fugiat veniam minus",
     completed: false
   },
   {
     userId: 1,
-    id: 4,
+    id: 'x4',
     title: "et porro tempora",
     completed: true
   },
   {
     userId: 1,
-    id: 5,
+    id: 'x5',
     title: "laboriosam mollitia et enim quasi adipisci quia provident illum",
     completed: false
   }
@@ -61,6 +61,9 @@ export default function todo(state = initialState, action) {
       // Filter out the removed todo via id
       const filtered = state.filter(todo => todo.id !== action.id);
       return [...filtered];
+    case "FETCH_TODOS":
+      // Append the fetched to dos
+      return [...state, ...action.payload];
 
     default:
       return state;

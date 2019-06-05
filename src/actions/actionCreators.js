@@ -13,6 +13,20 @@ export const reset = () => ({
 
 
 // Todo Action Creators
+
+export function fetchTodos() {
+  return function(dispatch) {
+    fetch("https://jsonplaceholder.typicode.com/todos")
+      .then(res => res.json())
+      .then(data =>
+        dispatch({
+          type: 'FETCH_TODOS',
+          payload: data
+        })
+      );
+  };
+}
+
 export const addTodo = text => ({
   type: 'ADD_TODO',
   id: uuid.v4(),
