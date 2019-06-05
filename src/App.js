@@ -1,9 +1,11 @@
 import React from "react";
-import { createStore, applyMiddleware, compose } from "redux";
+
 import { Provider } from "react-redux";
-import thunk from "redux-thunk";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./App.css";
+
+//  Store - Redux
+import store from './store'
 
 //  Components
 import TodoList from "./components/TodoList";
@@ -13,21 +15,7 @@ import Counter from "./components/Counter";
 //  Movies
 import MovieList from "./components/MovieList";
 
-//  Reducer(s)
-import rootReducer from "./reducers";
 
-//  Middleware
-const middleware = [thunk];
-
-// Create a Redux store holding the state of your app.
-// Its API is { subscribe, dispatch, getState }.
-let store = createStore(
-  rootReducer,
-  compose(
-    applyMiddleware(...middleware),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  )
-);
 
 function App() {
   return (
