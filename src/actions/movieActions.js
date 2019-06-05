@@ -27,7 +27,7 @@ export function fetchMovies() {
         .then(handleErrors)
         .then(res => res.json())
         .then(json => {
-          dispatch(fetchMoviesSuccess(json.Movies));
+          dispatch(fetchMoviesSuccess(json.results));
           return json.Movies;
         })
         .catch(error => dispatch(fetchMoviesFailure(error)));

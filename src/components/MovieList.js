@@ -9,15 +9,33 @@ class MovieList extends Component {
   }
 
   render() {
-    return <div>List of Movies</div>;
+    const { movies } = this.props;
+
+    const movieList = movies.map(movie => {
+      return <p key={movie.id}>{movie.title}</p>;
+    });
+
+    return (
+      <div>
+        <h1>List of Movies</h1>
+        {movieList}
+      </div>
+    );
   }
 }
+
+const mapStateToProps = state => {
+  console.log(state);
+  return {
+    movies: state.movies
+  };
+};
 
 const mapDispatchToProps = {
   fetchMovies
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(MovieList);
