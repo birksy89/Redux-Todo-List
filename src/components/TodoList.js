@@ -4,30 +4,27 @@ import { connect } from "react-redux";
 import { addTodo, removeTodo, fetchTodos } from "../actions/actionCreators";
 
 class TodoList extends Component {
-
   componentDidMount() {
-
-    console.log();
-    
-    if(this.props.todoData.length ===0){
-
+    if (this.props.todoData.length === 0) {
       this.props.fetchTodos();
     }
   }
-  
+
   renderTodos = (data = []) => {
-    return data.map(item => <li key={item.id}>
-      <button onClick={() => this.handleRemove(item.id)}>X</button>
-      {item.title}</li>);
+    return data.map(item => (
+      <li key={item.id}>
+        <button onClick={() => this.handleRemove(item.id)}>X</button>
+        {item.title}
+      </li>
+    ));
   };
 
   handleAddDummy = () => {
     this.props.addTodo("Dummy Item...");
   };
-  handleRemove = (id) => {
+  handleRemove = id => {
     console.log("I will remove...", id);
     this.props.removeTodo(id);
-   
   };
 
   render() {
