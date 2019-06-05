@@ -10,6 +10,8 @@ import TodoList from "./components/TodoList";
 import AddTodo from "./components/AddTodo";
 // Counter
 import Counter from "./components/Counter";
+//  Movies
+import MovieList from "./components/MovieList";
 
 //  Reducer(s)
 import rootReducer from "./reducers";
@@ -37,6 +39,9 @@ function App() {
               <Link to="/">Home</Link>
             </li>
             <li>
+              <Link to="/movies">Movie List</Link>
+            </li>
+            <li>
               <Link to="/todo">Todos</Link>
             </li>
             <li>
@@ -47,6 +52,7 @@ function App() {
           <hr />
 
           <Route exact path="/" component={Counter} />
+          <Route path="/movies" component={MovieList} />
           <Route path="/todo" component={TodoList} />
           <Route path="/add" component={AddTodo} />
         </div>
