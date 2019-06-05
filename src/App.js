@@ -2,6 +2,7 @@ import React from "react";
 import { createStore, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./App.css";
 
 //  Components
@@ -26,18 +27,31 @@ let store = createStore(
   )
 );
 
-
 function App() {
   return (
     <Provider store={store}>
-      <div className="App">
-        <h1>Counter</h1>
-        <Counter/>
-        <hr/>
-        <h1>Todo App</h1>
-        <TodoList />
-        <AddTodo />
-      </div>
+      <Router>
+        <div className="App">
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/todo">Todos</Link>
+            </li>
+            <li>
+              <Link to="/add">Topics</Link>
+            </li>
+          </ul>
+
+          <hr />
+
+          <Route exact path="/" component={Counter} />
+          <Route path="/todo" component={TodoList} />
+          <Route path="/add" component={AddTodo} />
+         
+        </div>
+      </Router>
     </Provider>
   );
 }
