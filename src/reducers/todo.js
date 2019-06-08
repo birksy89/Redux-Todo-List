@@ -14,11 +14,11 @@
 const initialState = [];
 
 export default function todo(state = initialState, action) {
-  console.log("Inside the 'todo' reducer", state, action);
+  //console.log("Inside the 'todo' reducer", state, action);
 
   switch (action.type) {
     case "ADD_TODO":
-      console.log("Inside action type - ADD_TODO");
+      //console.log("Inside action type - ADD_TODO");
       const newTodo = {
         userId: 1,
         id: action.id,

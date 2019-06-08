@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 // Import the possible actions
-import { fetchMovies, toggleMovieFavourite } from "../actions/movieActions";
+import { fetchMovies } from "../actions/movieActions";
 import MovieList from '../components/MovieList' 
 
 
@@ -30,7 +30,7 @@ class MoviesPopular extends Component {
 const mapStateToProps = state => {
   console.log(state);
   return {
-    movies: state.movies
+    movies: state.movieData.movies
   };
 };
 

@@ -14,7 +14,7 @@ import AddTodo from "./components/AddTodo";
 import Counter from "./components/Counter";
 //  Movies
 import MoviesPopular from "./routes/MoviesPopular";
-import MovieList from "./components/MovieList";
+import MoviesFavourite from "./routes/MoviesFavourite";
 
 function App() {
   return (
@@ -30,6 +30,9 @@ function App() {
             </li>
             <li>
               <Link to="/movies/popular">Popular Movies</Link>
+            </li>
+            <li>
+              <Link to="/movies/favourite">Favourite Movies</Link>
             </li>
             <li>
               <Link to="/todo">Todos</Link>
@@ -50,6 +53,7 @@ function App() {
             path="/movies/popular"
             render={props => <MoviesPopular {...props} type={"popular"} />}
           />
+          <Route path="/movies/favourite" component={MoviesFavourite} />
           <Route path="/todo" component={TodoList} />
           <Route path="/add" component={AddTodo} />
         </div>

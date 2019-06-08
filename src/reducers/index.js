@@ -6,6 +6,6 @@ import movies from './movieReducer'
 export default combineReducers({
   counter,
   todo,
-  movies
+  movieData:movies
   //etc
 })
