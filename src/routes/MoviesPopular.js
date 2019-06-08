@@ -2,26 +2,21 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 // Import the possible actions
 import { fetchMovies } from "../actions/movieActions";
-import MovieList from '../components/MovieList' 
-
+import MovieList from "../components/MovieList";
 
 class MoviesPopular extends Component {
   componentDidMount() {
-    const { movies, type } = this.props;
+    const { type } = this.props;
 
-    //if (movies.length === 0) {
-      this.props.fetchMovies(type);
-    //}
+    this.props.fetchMovies(type);
   }
-
-
 
   render() {
     const { movies, type } = this.props;
     return (
       <div>
         <h1>List of {type} Movies</h1>
-        <MovieList movies={movies}/>
+        <MovieList movies={movies} />
       </div>
     );
   }

@@ -8,7 +8,7 @@ export default class MovieList extends Component {
     return (
       <>
         {movies.map(movie => (
-          <MovieCard movie={movie} />
+          <MovieCard key={movie.id} movie={movie} />
         ))}
       </>
     );

@@ -32,7 +32,6 @@ class MovieCard extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     moviesFav: state.movieData.moviesFav
   };

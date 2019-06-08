@@ -10,7 +10,8 @@ class MoviesFavourite extends Component {
     const { moviesFav, type } = this.props;
     return (
       <div>
-        <h1>List of {type} Movies</h1>
+        <h1>List of Favourite Movies</h1>
+        
         <MovieList movies={moviesFav}/>
       </div>
     );
