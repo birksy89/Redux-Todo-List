@@ -47,7 +47,8 @@ export function fetchMovies(listType) {
 
 
   // Toggle movie is favourite
-  export const toggleMovieFavourite = (movieId) => ({
+  export const toggleMovieFavourite = (movie) => ({
+    //  What should the payload be - The whole "movie" or just the "Id"???
     type: TOGGLE_MOVIE_FAVOURITE,
-    payload: movieId
+    payload: movie
   });

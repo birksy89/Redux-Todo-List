@@ -21,19 +21,21 @@ export default function movies(state = initialState, action) {
    
     case "TOGGLE_MOVIE_FAVOURITE":
       console.log("Inside action type - TOGGLE_MOVIE_FAVOURITE");
-      //    loop around and set the movie with the id to have fav prop
-      const movies = state.map(movie => {
-        if (movie.id === action.payload) {
-          //  Get current value - If exists
-          const isFav = movie.isFavourite;
-          return {
-            ...movie,
-            isFavourite: !isFav
-          };
-        }
-        return movie;
-      });
-      return [...movies];
+      let newMovieFav = [...state.moviesFav];
+      if(state.moviesFav.includes(action.payload)){
+        // Remove from array
+        newMovieFav = newMovieFav.filter(item => item !== action.payload)
+      }
+      else{
+        // Add to array
+        newMovieFav = state.moviesFav.concat(action.payload)
+      } 
+
+      return {
+        ...state,
+        moviesFav: newMovieFav
+      };
+      
 
     default:
       return state;
