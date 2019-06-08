@@ -14,16 +14,13 @@ class MoviesPopular extends Component {
     //}
   }
 
-  favouriteMovie = movieId => {
-    console.log(`Liking movie : ${movieId}`);
-    this.props.toggleMovieFavourite(movieId);
-  };
+
 
   render() {
-    const { movies } = this.props;
+    const { movies, type } = this.props;
     return (
       <div>
-        <h1>List of Popular Movies</h1>
+        <h1>List of {type} Movies</h1>
         <MovieList movies={movies}/>
       </div>
     );
@@ -38,8 +35,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  fetchMovies,
-  toggleMovieFavourite
+  fetchMovies
 };
 
 export default connect(
