@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {  toggleMovieFavourite } from "../actions/movieActions";
+import { toggleMovieFavourite } from "../actions/movieActions";
 
 class MovieCard extends Component {
   favouriteMovie = movie => {
@@ -8,27 +8,22 @@ class MovieCard extends Component {
     this.props.toggleMovieFavourite(movie);
   };
 
-  checkIsFavourite = (movie) => {
-    if(this.props.moviesFav.includes(movie)){
+  checkIsFavourite = movieId => {
+    const isFavourited = this.props.moviesFav.filter(
+      movie => movie.id === movieId
+    );
 
-      return true
-    }else{
-      return false
-    }
-  }
-
-
-
-  
+    return isFavourited.length;
+  };
 
   render() {
-    const {movie} = this.props;
-    const { id, title } =movie;
+    const { movie } = this.props;
+    const { id, title } = movie;
     return (
       <p key={id}>
         <button onClick={() => this.favouriteMovie(movie)}>
           {//Check if favourite
-          this.checkIsFavourite(movie) ? <>X</> : <>&hearts;</>}
+          this.checkIsFavourite(id) ? <>X</> : <>&hearts;</>}
         </button>{" "}
         {title}
       </p>
@@ -44,11 +39,10 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-    toggleMovieFavourite
-  };
+  toggleMovieFavourite
+};
 
 export default connect(
   mapStateToProps,
-    mapDispatchToProps
-  )(MovieCard);
-  
+  mapDispatchToProps
+)(MovieCard);
