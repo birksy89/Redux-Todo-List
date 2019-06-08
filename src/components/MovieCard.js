@@ -21,11 +21,13 @@ class MovieCard extends Component {
     const { id, title } = movie;
     return (
       <p key={id}>
+          <img src={`https://image.tmdb.org/t/p/w92${movie.poster_path}`}/>
         <button onClick={() => this.favouriteMovie(movie)}>
           {//Check if favourite
           this.checkIsFavourite(id) ? <>X</> : <>&hearts;</>}
         </button>{" "}
         {title}
+
       </p>
     );
   }
