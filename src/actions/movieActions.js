@@ -17,11 +17,13 @@ export const fetchMoviesFailure = error => ({
   payload: { error }
 });
 
-const url = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1
-`
+
 
 // The function which does the heavy lifting...
-export function fetchMovies() {
+export function fetchMovies(listType) {
+
+  const url = `https://api.themoviedb.org/3/movie/${listType}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`
+
     return dispatch => {
       dispatch(fetchMoviesBegin());
       return fetch(url)

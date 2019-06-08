@@ -9,7 +9,7 @@ export default function movies(state = initialState, action) {
       return [...state];
     case "FETCH_MOVIES_SUCCESS":
       console.log("Inside action type - FETCH_MOVIES_SUCCESS");
-      return [...state, ...action.payload.movies];
+      return [...action.payload.movies];
     case "TOGGLE_MOVIE_FAVOURITE":
       console.log("Inside action type - TOGGLE_MOVIE_FAVOURITE");
       //    loop around and set the movie with the id to have fav prop

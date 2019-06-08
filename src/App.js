@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./App.css";
 
 //  Store - Redux
-import store from './store'
+import store from "./store";
 
 //  Components
 import TodoList from "./components/TodoList";
@@ -13,9 +13,8 @@ import AddTodo from "./components/AddTodo";
 // Counter
 import Counter from "./components/Counter";
 //  Movies
+import MoviesPopular from "./routes/MoviesPopular";
 import MovieList from "./components/MovieList";
-
-
 
 function App() {
   return (
@@ -27,7 +26,10 @@ function App() {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/movies">Movie List</Link>
+              <Link to="/movies/top_rated">Top Rated Movies</Link>
+            </li>
+            <li>
+              <Link to="/movies/popular">Popular Movies</Link>
             </li>
             <li>
               <Link to="/todo">Todos</Link>
@@ -40,7 +42,14 @@ function App() {
           <hr />
 
           <Route exact path="/" component={Counter} />
-          <Route path="/movies" component={MovieList} />
+          <Route
+            path="/movies/top_rated"
+            render={props => <MoviesPopular {...props} type={"top_rated"} />}
+          />
+          <Route
+            path="/movies/popular"
+            render={props => <MoviesPopular {...props} type={"popular"} />}
+          />
           <Route path="/todo" component={TodoList} />
           <Route path="/add" component={AddTodo} />
         </div>
